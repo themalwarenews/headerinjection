@@ -1,5 +1,6 @@
 import sys
 import subprocess
+from pyfiglet import Figlet
 
 def print_colored_message(color_code, message):
     colors = {
@@ -36,7 +37,14 @@ def is_url_vulnerable_to_injection(url, headers):
             return True, header
     return False, None
 
+def create_ascii_banner(text):
+    f = Figlet(font='slant')
+    ascii_art = f.renderText(text)
+    print(ascii_art)
+
 def main():
+    create_ascii_banner('Header Injection')
+
     if not verify_dependencies():
         print("Please make sure the following dependencies are installed: curl.")
         sys.exit(1)
